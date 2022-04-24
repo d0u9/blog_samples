@@ -25,11 +25,11 @@ int prog_a(struct __sk_buff *skb)
 		__sync_fetch_and_add(valp, 1);
 	}
 
-	valp = (__u64 *)bpf_map_lookup_elem(&map_4, &key);
-	if (!valp) {
+	__u32 *val32p = (__u32 *)bpf_map_lookup_elem(&map_4, &key);
+	if (!val32p) {
 		bpf_map_update_elem(&map_4, &key, &initval, BPF_ANY);
 	} else {
-		__sync_fetch_and_add(valp, 1);
+		__sync_fetch_and_add(val32p, 1);
 	}
 
 	return 0;

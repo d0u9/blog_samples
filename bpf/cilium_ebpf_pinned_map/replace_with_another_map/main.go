@@ -33,7 +33,7 @@ func LoadMap4FromFile(specs *ebpf.CollectionSpec) *ebpf.Map {
 	}
     mp, err := ebpf.NewMapWithOptions(specs.Maps["map_4"], opt);
     if err != nil {
-        log.Fatalf("cannot load map3: %v", err)
+        log.Fatalf("cannot load map4: %v", err)
     }
     return mp
 }
@@ -60,7 +60,7 @@ func main() {
 
     fmt.Printf("%v\n", specs);
 
-    /*
+
     objs := progPrograms{}
     opts := ebpf.CollectionOptions {
         Maps: ebpf.MapOptions {
@@ -70,26 +70,6 @@ func main() {
     if err := specs.LoadAndAssign(&objs, &opts); err != nil {
         log.Fatalf("LoadAndAssign Failed: %v\n", err)
     }
-    */
-
-    /*
-    map_objs := progMaps{}
-	opt := ebpf.CollectionOptions{
-		Maps: ebpf.MapOptions{
-			PinPath: PIN_PATH,
-		},
-	}
-	if err := loadProgObjects(&map_objs, &opt); err != nil {
-		log.Fatalf("loading maps objects: %v", err)
-	}
-	defer map_objs.Close()
-
-	prog_objs := progPrograms{}
-	if err := loadProgObjects(&prog_objs, &opt); err != nil {
-	    log.Fatalf("loading progs objects: %v", err)
-	}
-	defer prog_objs.Close()
-	*/
 
 	var buffer string
 	fmt.Println("Press any key to continue")
